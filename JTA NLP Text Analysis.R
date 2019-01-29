@@ -8,10 +8,11 @@ library(tm)
 library(tokenizers)
 library(data.table)
 library(tm) #load text mining library
-setwd("C:/Users/ugrayca/Documents/Pearson/Other Research/Automated JTA/ASNT RTIII Reference Materials/") #sets R's working directory to near where my files are
+setwd() #sets R's working directory to near where my files are
 
 
-NDT_RTIII_TEXT  <-Corpus(DirSource("C:/Users/ugrayca/Documents/Pearson/Other Research/Automated JTA/ASNT RTIII Reference Materials/NDT RTIII Handbook/"), readerControl = list(language="lat")) #specifies the exact folder where my text file(s) is for analysis with tm.
+NDT_RTIII_TEXT  <-Corpus
+#specifies the exact folder where my text file(s) is for analysis with tm.
 summary(NDT_RTIII_TEXT)
 
 #Take two Corpuses, split them into sentences, combine Document title, combine lists#
@@ -457,7 +458,6 @@ FinalModel <- LDA(chapters_dtm, k = 8, method = "Gibbs",
                   control = list(burnin = burnin, iter = iter, keep = keep) )
 
 # approach to drawing word clouds of all topics from an object created with LDA,
-# taken from /blog/2016/12/31/sparse-bags
 n <- 100; palette = "Greens"; lda <- FinalModel
 
 p <- posterior(lda)
